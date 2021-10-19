@@ -1,4 +1,7 @@
 #include <cstdint>
+#include <vector>
+#include <iostream>
+#include <algorithm>
 
 enum class PlatformEndianness
 {

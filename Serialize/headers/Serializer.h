@@ -1,7 +1,6 @@
 #ifndef RES_TP2_SERIALIZER_H
 #define RES_TP2_SERIALIZER_H
 #include <WinSock2.h>
-#include <iostream>
 #include "../headers/Framework.h"
 #include <vector>
 #include <fstream>
@@ -13,7 +12,7 @@ class Serializer {
 public:
 	//TODO apply correct types to methods
 
-	Serializer(int size);
+	//Serializer(int size);
     Serializer();
     template<typename T>
     void Serialize(T val);

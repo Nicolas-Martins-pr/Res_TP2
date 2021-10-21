@@ -22,7 +22,7 @@ int	main() {
 
 	std::cout << "Hello world" << std::endl;
     int size;
-    Serializer ser = Serializer(size);
+    Serializer ser = Serializer();
     int data1 = 123343;
     int data2 = -1233434;
     float data3 = 1233.434;
@@ -36,7 +36,7 @@ int	main() {
     ser.Write<float>(data3);
     ser.Write<float>(data4);
     data5.write(ser);
-    Deserializer des = Deserializer(ser.GetContainer());
+    Deserializer des = Deserializer(ser.GetContainer(),sizeof(ser.GetContainer()));
     int result1 =des.Read<int>();
     int result2 =des.Read<int>();
     float result3 =des.Read<float>();

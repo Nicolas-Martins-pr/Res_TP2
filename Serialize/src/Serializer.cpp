@@ -6,20 +6,15 @@ int main(){
 
 
 }
-void Serializer() {
-
+Serializer::Serializer() {
 
 }
 
-void Write(std::ostream& stream) {
-
-    stream.write(container,sizeof(container))
-
-
-//container.data()+size;
-}
 template<typename T>
-void Serialize(T val) {
+void Serializer::Write(T val) {
 
-	//memcpy();
+    
+    write(val,sizeof(val));
+
 }
+

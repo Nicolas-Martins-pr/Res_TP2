@@ -6,15 +6,16 @@ int main(){
 
 
 }
-Serializer::Serializer() {
 
+Serializer::Serializer(int size) {
+	//resize( container to size
 }
 
 template<typename T>
-void Serializer::Write(T val) {
+void Serializer::Write(T val,int size) {
 
-    
-    write(val,sizeof(val));
+	mcpy(container.data() + pos, val, size)
+	pos += size;
 
 }
 

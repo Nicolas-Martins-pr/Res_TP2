@@ -1,6 +1,4 @@
-﻿#include <iostream>
-#include <Compressor.h>
-#include "Serializer.h"
+﻿#include "Serializer.h"
 #include "Deserializer.h"
 
 struct Vector3{
@@ -8,9 +6,9 @@ struct Vector3{
     float vx, vy, vz;
 
     void write(Serializer ser){
-        ser.Write<float>(vx);
-        ser.Write<float>(vy);
-        ser.Write<float>(vz);
+        ser.Write<float>(vx, sizeof(vx));
+        ser.Write<float>(vy, sizeof(vy));
+        ser.Write<float>(vz, sizeof(vz));
     }
     void read(Deserializer des){
         des.Read<float>();
@@ -21,8 +19,8 @@ struct Vector3{
 int	main() {
 
 	std::cout << "Hello world" << std::endl;
-    int size;
-    Serializer ser = Serializer();
+    int size = 1024;
+    Serializer ser = Serializer(size);
     int data1 = 123343;
     int data2 = -1233434;
     float data3 = 1233.434;
@@ -31,10 +29,10 @@ int	main() {
     data5.vx = 25;
     data5.vy= 65463;
     data5.vz = -35;
-    ser.Write<int>(data1);
-    ser.Write<int>(data2);
-    ser.Write<float>(data3);
-    ser.Write<float>(data4);
+    ser.Write<int>(data1, sizeof(data1));
+    ser.Write<int>(data2, sizeof(data2));
+    ser.Write<float>(data3, sizeof(data3));
+    ser.Write<float>(data4, sizeof(data4));
     data5.write(ser);
     Deserializer des = Deserializer(ser.GetContainer(),sizeof(ser.GetContainer()));
     int result1 =des.Read<int>();

@@ -1,9 +1,7 @@
 #ifndef RES_TP2_SERIALIZER_H
 #define RES_TP2_SERIALIZER_H
-#include <WinSock2.h>
-#include "../headers/Framework.h"
+#include "Framework.h"
 #include <vector>
-#include <fstream>
 
 //using std::ios::binary;
 using namespace std;
@@ -12,19 +10,18 @@ class Serializer {
 public:
 	//TODO apply correct types to methods
 
-	//Serializer(int size);
-    Serializer();
+	Serializer(int size);
     template<typename T>
     void Serialize(T val);
     template<typename T>
-	void Write(T val);
+	void Write(T val, int size);
    const vector<char> GetContainer(){return container;};
 
 	//void Write(val, int size);
 private:
 	//TODO change to correct types and create getters + prendre en compte resize du container si besoin 
 	vector<char> container;
-	char* position;
+	int position;
 };
 
 

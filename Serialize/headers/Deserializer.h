@@ -1,7 +1,5 @@
 #ifndef RES_TP2_DESERIALIZER_H
 #define RES_TP2_DESERIALIZER_H
-#include <fstream>
-//#include "sstream"
 
 
 class Deserializer {
@@ -14,6 +12,8 @@ public:
 
 private:
 	//TODO add correct variables and getters ??
+	std::vector<char> containerToRead;
+	int sizeOfContainer;
 };
 
 

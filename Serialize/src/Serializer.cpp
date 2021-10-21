@@ -1,14 +1,25 @@
-#include <WinSock2.h>
-#include <iostream>
-#include "../headers/Framework.h"
-#include <vector>
-#include <iostream>
-#include <algorithm>
-
+#include "Serializer.h"
 using namespace std;
 
 int main(){
 
 
 
+}
+void Serializer() {
+
+
+}
+
+void Write(std::ostream& stream) {
+
+    stream.write(container,sizeof(container))
+
+
+//container.data()+size;
+}
+template<typename T>
+void Serialize(T val) {
+
+	//memcpy();
 }

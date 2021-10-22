@@ -2,18 +2,25 @@
 #define RES_TP2_DESERIALIZER_H
 
 
+#include <vector>
+
 class Deserializer {
 
 public:
-	//TODO apply template ? and correct types to methods
-	Deserializer(std::vector<char> container, int size);
+	//TODO why buffer size ???
+	Deserializer(std::vector<char> container, size_t size);
     template<typename T>
-	T Read();
+	T Read() {
+		T val;
+		memcpy(&val, containerToRead.data() + position, sizeof(val));
+		position += sizeof(val);
+		return val;
+	}
 
 private:
-	//TODO add correct variables and getters ??
+	int position = 0;
 	std::vector<char> containerToRead;
-	int sizeOfContainer;
+	size_t sizeOfContainer;
 };
 
 

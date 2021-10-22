@@ -12,7 +12,10 @@ add_subdirectory(Serialize)
 target_include_directories("${PROJECT_NAME}" PUBLIC
                           "Serialize/headers"
                           "Serialize/src"
-			  include/
-                          )
+			  include/)
+
+target_sources("${PROJECT_NAME}" PUBLIC Serialize/headers/Compressor.h Serialize/headers/Serializer.h Serialize/headers/Deserializer.h 
+                Serialize/headers/Player.h "Serialize/headers/Framework.h" Serialize/src/Compressor.cpp Serialize/src/Serializer.cpp 
+                Serialize/src/Deserializer.cpp Serialize/src/Compressor.cpp) 
 
 

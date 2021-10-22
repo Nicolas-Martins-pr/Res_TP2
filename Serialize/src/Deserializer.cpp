@@ -1,12 +1,9 @@
 #include "Deserializer.h"
 
-template<typename T>
-T Deserializer::Read() {
-	mcpy(containerToRead, val, sizeOfContainer);
-	return val;
-}
 
-Deserializer::Deserializer(std::vector<char> container, int size) {
+
+Deserializer::Deserializer(std::vector<char> container, size_t size) {
 	containerToRead = container;
 	sizeOfContainer = size;
 }
+

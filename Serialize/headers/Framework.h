@@ -1,7 +1,27 @@
 #include <cstdint>
-#include <vector>
 #include <iostream>
 #include <algorithm>
+#include "Serializer.h"
+#include "Deserializer.h"
+
+
+struct Vector3 {
+
+	float vx, vy, vz;
+
+	void write(Serializer * ser) {
+		ser->Write<float>(vx, sizeof(vx));
+		ser->Write<float>(vy, sizeof(vy));
+		ser->Write<float>(vz, sizeof(vz));
+	}
+
+	void read(Deserializer * des) {
+		vx = des->Read<float>();
+		vy = des->Read<float>();
+		vz = des->Read<float>();
+	}
+};
+
 
 enum class PlatformEndianness
 {

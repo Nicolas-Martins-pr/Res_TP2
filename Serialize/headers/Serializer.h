@@ -1,29 +1,27 @@
 #ifndef RES_TP2_SERIALIZER_H
 #define RES_TP2_SERIALIZER_H
-#include "Framework.h"
 #include <vector>
 
-//using std::ios::binary;
-using namespace std;
 class Serializer {
 
 public:
-	//TODO apply correct types to methods
-
 	Serializer(int size);
+	Serializer();
     template<typename T>
     void Serialize(T val);
+
     template<typename T>
-	void Write(T val, int size);
-   const vector<char> GetContainer(){return container;};
+	void Write(T val, size_t size)
+	{
+		memcpy(container.data() + position, & val, size);
+		position += size;
+	}
 
-	//void Write(val, int size);
+    const std::vector<char> GetContainer(){return container;}
 private:
-	//TODO change to correct types and create getters + prendre en compte resize du container si besoin 
-	vector<char> container;
-	int position;
+	std::vector<char> container;
+	int position = 0;
 };
-
 
 
 #endif //RES_TP2_SERIALIZER_H

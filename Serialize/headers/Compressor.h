@@ -1,22 +1,25 @@
 #ifndef TP2_COMPRESSOR_H
 #define TP2_COMPRESSOR_H
 #include <vector>
-
+#include "Framework.h"
 
 class Compressor {
 
 
 public:
-  int IntCompressor(int val);
-  float FloatCompressor(float val);
+   
   template<typename T>
-  std::vector<T> VectorCompressor(std::vector<T> val);
-
+  std::vector<T> VectorCompressor(Vector3 val);
+  template<typename T>
+  T IntCompressor(int val);
+  template<typename T>
+  T FloatCompressor(float val);
   
+   
 
-private:
+ 
 
 };
 
 
-#endif //TP2_COMPRESSOR_H
+#endif //TP2_COMPRESSOR_HD

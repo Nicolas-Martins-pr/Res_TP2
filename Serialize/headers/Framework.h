@@ -4,21 +4,44 @@
 #include "Serializer.h"
 #include "Deserializer.h"
 
+struct Quaternion
+{
+	float val_w;
+	float val_x;
+	float val_y;
+	float val_z;
 
+	void write(Serializer* ser) {
+		ser->Serialize<float>(val_w, sizeof(val_w));
+		ser->Serialize<float>(val_x, sizeof(val_x));
+		ser->Serialize<float>(val_y, sizeof(val_y));
+		ser->Serialize<float>(val_z, sizeof(val_z));
+	}
+
+	void read(Deserializer* des) {
+		val_w = des->Read<float>();
+		val_x = des->Read<float>();
+		val_y = des->Read<float>();
+		val_z = des->Read<float>();
+	}
+
+};
+
+template <typename T>
 struct Vector3 {
 
 	float vx, vy, vz;
 
 	void write(Serializer * ser) {
-		ser->Write<float>(vx, sizeof(vx));
-		ser->Write<float>(vy, sizeof(vy));
-		ser->Write<float>(vz, sizeof(vz));
+		ser->Serialize<T>(vx, sizeof(vx));
+		ser->Serialize<T>(vy, sizeof(vy));
+		ser->Serialize<T>(vz, sizeof(vz));
 	}
 
 	void read(Deserializer * des) {
-		vx = des->Read<float>();
-		vy = des->Read<float>();
-		vz = des->Read<float>();
+		vx = des->Read<T>();
+		vy = des->Read<T>();
+		vz = des->Read<T>();
 	}
 };
 

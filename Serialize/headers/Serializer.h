@@ -7,12 +7,16 @@ class Serializer {
 public:
 	Serializer(int size);
 	Serializer();
-    template<typename T>
-    void Serialize(T val);
 
     template<typename T>
-	void Write(T val, size_t size)
+	void Serialize(T val, size_t size)
 	{
+
+		if (container.size() <= position + size)
+		{
+			container.resize(container.size() + size);
+		}
+
 		memcpy(container.data() + position, & val, size);
 		position += size;
 	}
@@ -20,7 +24,7 @@ public:
     const std::vector<char> GetContainer(){return container;}
 private:
 	std::vector<char> container;
-	int position = 0;
+	int position;
 };
 
 

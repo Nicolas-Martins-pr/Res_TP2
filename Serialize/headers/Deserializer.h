@@ -7,7 +7,6 @@
 class Deserializer {
 
 public:
-	//TODO why buffer size ???
 	Deserializer(std::vector<char> container, size_t size);
     template<typename T>
 	T Read() {

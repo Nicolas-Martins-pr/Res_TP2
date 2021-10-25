@@ -10,7 +10,6 @@ Serializer::Serializer()
 {
 	container = std::vector<char>();
 	position = 0;
-	//container.resize(sizeof(container));
 }
 
 

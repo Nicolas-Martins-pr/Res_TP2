@@ -9,11 +9,13 @@ class Compressor {
 public:
    
   template<typename T>
-  std::vector<T> VectorCompressor(Vector3 val);
+  std::vector<T> VectorCompressor(Vector3<float> val, Vector3<float> min);
   template<typename T>
-  T IntCompressor(int val);
+  T IntCompressor(int val, int min);
   template<typename T>
-  T FloatCompressor(float val);
+  T FloatCompressor(float val, float min);
+  template<typename T>
+  T QuaternionCompressor(Quaternion val, Quaternion min);
   
    
 

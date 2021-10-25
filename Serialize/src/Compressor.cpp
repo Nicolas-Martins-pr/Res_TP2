@@ -8,77 +8,101 @@ union compresstype
 };
 
 template<typename T>
- T Compressor::FloatCompressor(float val) {
+ T Compressor::FloatCompressor(float val, float min) {
 
-    uint64_t absVal = abs(val) * 100;
+    int64_t absVal = (val+min) * 100;
 
-    if (absVal <= UINT8_MAX){
-        uint8_t valComp = absVal;
+    if (absVal <= INT8_MAX){
+        int8_t valComp = absVal;
         return valComp;
     }
-    else if (absVal <= UINT16_MAX){
+    else if (absVal <= INT16_MAX){
 
-        uint16_t valComp = absVal;
+        int16_t valComp = absVal;
         return valComp;
     }
-    else if (absVal < UINT32_MAX){
+    else if (absVal < INT32_MAX){
         
-        uint32_t valComp = absVal;
+        int32_t valComp = absVal;
         return valComp;
     }
     else{
-        uint64_t valComp = absVal;
+        int64_t valComp = absVal;
         return valComp;
     }
     
 
 }
  template<typename T>
-  std::vector<T>Compressor::VectorCompressor(Vector3 val)
+ T Compressor::QuaternionCompressor(Quaternion qVal, Quaternion min)
  {
-      std::vector<uint64_t> vAbs = { abs(val.vx) * 100, abs(val.vy) * 100, abs(val.vz) * 100};
+     std::vector<int64_t> vAbs = { (qVal.val_w + min.val_w) * 100, (qVal.val_x +min.val_x) * 100, (qVal.val_y + min.val_y) * 100, (qVal.val_z+min.val_z) * 100 };
 
-      if ((vAbs[0] && vAbs[1] && vAbs[2]) <= UINT8_MAX) {
-          std::vector<uint8_t>  valComp = vAbs;
+     if ((vAbs[0] && vAbs[1] && vAbs[2] && vAbs[3]) <= INT8_MAX) {
+         std::vector<int8_t>  valComp = vAbs;
+         return valComp;
+     }
+     else if ((vAbs[0] && vAbs[1] && vAbs[2] && vAbs[3]) <= INT16_MAX) {
+
+         std::vector<int16_t>valComp = vAbs;
+         return valComp;
+     }
+     else if ((vAbs[0] && vAbs[1] && vAbs[2] && vAbs[3]) <= INT32_MAX) {
+
+         std::vector<int32_t> valComp = vAbs;
+         return valComp;
+     }
+     else {
+         std::vector<int64_t> valComp = vAbs;
+         return valComp;
+     }
+ }
+ template<typename T>
+  std::vector<T> Compressor::VectorCompressor(Vector3<float> val, Vector3<float> min)
+ {
+      std::vector<int64_t> vAbs = { (val.vx + min.vx) * 100, (val.vy + min.vy) * 100, abs(val.vz + min.vz) * 100};
+
+      if ((vAbs[0] && vAbs[1] && vAbs[2]) <= INT8_MAX) {
+          std::vector<int8_t>  valComp = vAbs;
           return valComp;
       }
-      else if ((vAbs[0] && vAbs[1] && vAbs[2]) <= UINT16_MAX) {
+      else if ((vAbs[0] && vAbs[1] && vAbs[2]) <= INT16_MAX) {
 
-          std::vector<uint16_t>valComp = vAbs;
+          std::vector<int16_t>valComp = vAbs;
           return valComp;
       }
-      else if ((vAbs[0] && vAbs[1] && vAbs[2]) < UINT32_MAX) {
+      else if ((vAbs[0] && vAbs[1] && vAbs[2]) < INT32_MAX) {
 
-          std::vector<uint32_t> valComp = vAbs;
+          std::vector<int32_t> valComp = vAbs;
           return valComp;
       }
       else {
-          std::vector<uint64_t> valComp = vAbs;
+          std::vector<int64_t> valComp = vAbs;
           return valComp;
       }
  }
 
  template<typename T>
-T Compressor::IntCompressor(int val) {
+T Compressor::IntCompressor(int val, int min) {
 
-    unsigned int absVal = abs(val);
+    int absVal = (val + min);
 
-    if (absVal <= UINT8_MAX) {
-        uint8_t valComp = absVal;
+    if (absVal <= INT8_MAX) {
+        int8_t valComp = absVal;
         return valComp;
     }
-    else if (absVal <= UINT16_MAX) {
+    else if (absVal <= INT16_MAX) {
 
-        uint16_t valComp = absVal;
+        int16_t valComp = absVal;
         return valComp;
     }
-    else if (absVal < UINT32_MAX) {
+    else if (absVal < INT32_MAX) {
 
-        uint32_t valComp = absVal;
+        int32_t valComp = absVal;
         return valComp;
     }
     else {
-        uint64_t valComp = absVal;
+        int64_t valComp = absVal;
         return valComp;
     }
 

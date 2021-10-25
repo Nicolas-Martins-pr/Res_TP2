@@ -5,8 +5,8 @@
 * Download the code from github or go to code -> open with visual studio.
 * Unzip the files in a folder if you didn't open with VS.
 * Open the folder where all the files are with visual studio.
-* Generate the solution.
-* Use the executables of the tp2.
+* Generate the solution with cmake GUI.
+* Open the solution and debug it or use the executable builded.
 
 ## Fonctionnalités non terminées
 

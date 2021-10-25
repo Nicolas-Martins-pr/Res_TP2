@@ -15,7 +15,7 @@ target_include_directories("${PROJECT_NAME}" PUBLIC
 			  include/)
 
 target_sources("${PROJECT_NAME}" PUBLIC Serialize/headers/Compressor.h Serialize/headers/Serializer.h Serialize/headers/Deserializer.h 
-                Serialize/headers/Player.h "Serialize/headers/Framework.h" Serialize/src/Compressor.cpp Serialize/src/Serializer.cpp 
+                Serialize/headers/Player.h  Serialize/src/Player.cpp "Serialize/headers/Framework.h" Serialize/src/Compressor.cpp Serialize/src/Serializer.cpp 
                 Serialize/src/Deserializer.cpp Serialize/src/Compressor.cpp) 
 
 

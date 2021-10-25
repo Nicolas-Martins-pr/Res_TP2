@@ -1054,6 +1054,30 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "Project_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "H:/boulot/Reseau/Res_TP2/out/build/x64-Debug"
+		},
+		{
+			"name" : "Project_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "H:/boulot/Reseau/Res_TP2"
+		},
+		{
 			"name" : "Res_TP2_BINARY_DIR",
 			"properties" : 
 			[

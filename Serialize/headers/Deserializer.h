@@ -17,6 +17,8 @@ public:
 		return val;
 	}
 
+	int GetPosition() const { return position; }
+	std::vector<char> GetContainerToRead() const { return containerToRead; }
 private:
 	int position = 0;
 	std::vector<char> containerToRead;

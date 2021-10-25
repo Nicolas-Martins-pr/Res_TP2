@@ -8,25 +8,30 @@
 class Player {
 
 public:
-	Player(Vector3<float> position, Vector3<float> taille, struct Quaternion rotation, int hp, int armor, float money, char * playerName) : position(position), taille(taille), health(hp), armor(armor), money(money), name(playerName)
-	{
-	}
+	Player(Vector3<float> position, Vector3<float> taille, struct Quaternion rotation, int hp, int armor, float money, char* playerName);
 	Player();
 
+	void write(Serializer* ser);
+	void read(Deserializer* des);
 
-	const Vector3<float> GetPosition() { return position; }
-	const Vector3<float> GetTaille() { return taille; }
-	const Quaternion GetRotation() { return rotation; }
-	const int GetHealth() { return health; }
-	const int GetMaxHealth() { return healthMax; }
-	const int GetMinHealth() { return healthMin; }
-	const int GetArmor() { return armor; }
-	const int GetMaxArmor() { return armorMax; }
-	const int GetMinArmor() { return armorMin; }
-	const float GetMoney() { return money; }
-	const float GetMaxMoney() { return moneyMin; }
-	const float GetMinMoney() { return moneyMax; }
-	const char* GetName() { return name; }
+	void printInfos();
+
+	Vector3<float> GetPosition() const { return position; }
+	Vector3<float> GetTaille() const { return taille; }
+	Quaternion GetRotation() const { return rotation; }
+	int GetHealth() const { return health; }
+	int GetArmor() const { return armor; }
+	float GetMoney() const { return money; }
+	char* GetName() const { return name; }
+
+	void SetPosition(Vector3<float> newPosition);
+	void SetTaille(Vector3<float> newTaille);
+	void SetRotation(Quaternion newRotation);
+	void SetHealth(int newHealth);
+	void SetArmor(int newArmor);
+	void SetMoney(float newMoney);
+	void SetName(char * newName);
+
 private:
 	Vector3<float> position;
 	Vector3<float> taille;
@@ -40,7 +45,7 @@ private:
 	float money;
 	float moneyMax = 99999.99;
 	float moneyMin = -99999.99;
-	//TODO 128 max characters
+	size_t nameMaxSize = 128;
 	char * name;
 };
 
